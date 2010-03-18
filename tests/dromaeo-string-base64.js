@@ -121,7 +121,7 @@ startTest("dromaeo-string-base64");
 var str = [];
 
 for ( var i = 0; i < 4096; i++ )
-        str.push( String.fromCharCode( (25 * Math.random()) + 97 ) );
+        str.push( String.fromCharCode( (25 * random()) + 97 ) );
 
 str = str.join("");
 str += str;

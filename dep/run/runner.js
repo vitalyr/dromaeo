@@ -61,6 +61,8 @@
 		}
 	};
 
+	this.random = function(){ return Math.random(); };
+
 	// The actual testing function (only to be called via the queue control)
 	function doTest(name, num, fn){
 		title = name;

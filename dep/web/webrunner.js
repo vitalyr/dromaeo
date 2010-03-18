@@ -13,10 +13,29 @@
 	// A rough estimate, in seconds, of how long it'll take each test
 	// iteration to run
 	var timePerTest = runStyle === "runs/s" ? 1 : 0.5;
-	
+
+	// Use deterministic random number generator to reduce variance
+	var rndInit = 17;
+	var rnd = rndInit;
+
+	this.random = function(){
+		// Note the product here fits in 32 + 17 = 49 bits and
+		// so we get an exact number. Unsigned right shift
+		// converts it to uint32
+		rnd = (rnd * 69069) >>> 0;
+		// Be paranoid: if it somehow becomes 0 generate a new
+		// random seed
+		if ( rnd === 0 ) rnd = 2 * Math.floor(10000 * Math.random()) + 1;
+		// Divide by max uint32 + 1 to get a number from [0, 1)
+		return rnd / 0x100000000;
+	};
+
 	// Initialize a batch of tests
 	//  name = The name of the test collection
 	this.startTest = function(name, version){
+		// Reset random number generator
+		rnd = rndInit;
+
 		numloaded++;
 		if ( numloaded == totalTests )
 			setTimeout( init, 100 );
@@ -194,7 +213,7 @@
 			return results;
 		}
 	};
-	
+
 	// All the test data
 	var tests;
 	

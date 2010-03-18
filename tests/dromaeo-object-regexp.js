@@ -5,7 +5,7 @@ var str = [], tmp, ret, re, testStrings = [];
 var i = 65536;
 
 function randomChar(){
-	return String.fromCharCode( (25 * Math.random()) + 97 );
+	return String.fromCharCode( (25 * random()) + 97 );
 }
 
 for ( var i = 0; i < 16384; i++ )
@@ -22,7 +22,7 @@ function generateTestStrings(count){
 	for ( var i = testStrings.length; i < count; i++ ) {
 		// Make all tested strings different
 		t = randomChar() + str + randomChar();
-		nest = Math.floor(4 * Math.random());
+		nest = Math.floor(4 * random());
 		for ( var j = 0; j < nest; j++ ) {
 			t = randomChar() + t + randomChar();
 		}

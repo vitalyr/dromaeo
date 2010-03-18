@@ -37,7 +37,7 @@ var num = 80000;
 var ostr = [], tmp, tmp2, num = 5000, tmpstr;
 
 for ( var i = 0; i < 16384; i++ )
-	ostr.push( String.fromCharCode( (25 * Math.random()) + 97 ) );
+	ostr.push( String.fromCharCode( (25 * random()) + 97 ) );
 
 ostr = ostr.join("");
 ostr += ostr;
